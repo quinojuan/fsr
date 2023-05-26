@@ -1,0 +1,134 @@
+[
+  {
+   "lastName": "Acevedo",
+   "name": "Juana",
+   "regularPionner": "false",
+   "elder": "false",
+   "ministerialServant": "false",
+   "group": 1,
+   "dateOfBirth": "12\/27\/1950",
+   "dateOfInmersed": "09\/24\/1966",
+   "gender": "Femenino"
+  },
+  {
+   "lastName": "Egues",
+   "name": "Daniela",
+   "regularPionner": "true",
+   "elder": "false",
+   "ministerialServant": "false",
+   "group": 1,
+   "dateOfBirth": "06\/01\/1974",
+   "dateOfInmersed": "05\/30\/1987",
+   "gender": "Femenino"
+  },
+  {
+   "lastName": "Egues",
+   "name": "Gustavo",
+   "regularPionner": "true",
+   "elder": "true",
+   "ministerialServant": "false",
+   "group": 1,
+   "dateOfBirth": "11\/14\/1977",
+   "dateOfInmersed": "09\/03\/2005",
+   "gender": "Masculino"
+  },
+  {
+   "lastName": "Medina",
+   "name": "Marcelo",
+   "regularPionner": "true",
+   "elder": "true",
+   "ministerialServant": "false",
+   "group": 1,
+   "dateOfBirth": "05\/15\/1980",
+   "dateOfInmersed": "07\/16\/1995",
+   "gender": "Masculino"
+  },
+  {
+   "lastName": "Medina",
+   "name": "Rebeca",
+   "regularPionner": "true",
+   "elder": "false",
+   "ministerialServant": "false",
+   "group": 1,
+   "dateOfBirth": "03\/03\/1974",
+   "dateOfInmersed": "12\/29\/1984",
+   "gender": "Femenino"
+  },
+  {
+   "lastName": "Romero",
+   "name": "Estela",
+   "regularPionner": "false",
+   "elder": "false",
+   "ministerialServant": "false",
+   "group": 1,
+   "dateOfBirth": "07\/22\/1978",
+   "dateOfInmersed": "PNB",
+   "gender": "Femenino"
+  },
+  {
+   "lastName": "Romero",
+   "name": "María",
+   "regularPionner": "false",
+   "elder": "false",
+   "ministerialServant": "false",
+   "group": 1,
+   "dateOfBirth": "06\/22\/1999",
+   "dateOfInmersed": "03\/01\/2014",
+   "gender": "Femenino"
+  },
+  {
+   "lastName": "Romero",
+   "name": "Vicente",
+   "regularPionner": "false",
+   "elder": "false",
+   "ministerialServant": "true",
+   "group": 1,
+   "dateOfBirth": "01\/20\/1973",
+   "dateOfInmersed": "03\/01\/2014",
+   "gender": "Masculino"
+  },
+  {
+   "lastName": "Sánchez",
+   "name": "Miriam",
+   "regularPionner": "true",
+   "elder": "false",
+   "ministerialServant": "false",
+   "group": 1,
+   "dateOfBirth": "02\/23\/1998",
+   "dateOfInmersed": "03\/01\/2014",
+   "gender": "Femenino"
+  },
+  {
+   "lastName": "Sánchez",
+   "name": "Yanina",
+   "regularPionner": "false",
+   "elder": "false",
+   "ministerialServant": "false",
+   "group": 1,
+   "dateOfBirth": "07\/10\/1994",
+   "dateOfInmersed": "04\/22\/2017",
+   "gender": "Femenino"
+  },
+  {
+   "lastName": "Sanfilippo",
+   "name": "Dámaris",
+   "regularPionner": "true",
+   "elder": "false",
+   "ministerialServant": "false",
+   "group": 1,
+   "dateOfBirth": "07\/30\/1986",
+   "dateOfInmersed": "06\/26\/1998",
+   "gender": "Femenino"
+  },
+  {
+   "lastName": "Sanfilippo",
+   "name": "Diego",
+   "regularPionner": "true",
+   "elder": "true",
+   "ministerialServant": "false",
+   "group": 1,
+   "dateOfBirth": "01\/13\/1982",
+   "dateOfInmersed": "07\/06\/1996",
+   "gender": "Masculino"
+  }
+ ]

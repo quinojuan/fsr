@@ -9,6 +9,11 @@ const publisherSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  group: {
+    type: Number,
+    required: true,
+    enum: ["1","2","3","4"],
+  },
   dateOfBirth: {
     type: Date,
     default: new Date("01/01/1914"),

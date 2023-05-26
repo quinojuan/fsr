@@ -8,11 +8,11 @@ const app = express();
 
 app.use(morgan('dev'));
 app.use(express.json());
-app.use("/", publisherRoutes);
-
 app.get("/", (req, res) => {
   res.json({message: "Hello from get!"})
 })
+app.use("/", publisherRoutes);
+
 
 app.listen(port, () => {
   connectDB();
