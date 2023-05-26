@@ -12,7 +12,7 @@ const publisherSchema = new mongoose.Schema({
   group: {
     type: Number,
     required: true,
-    enum: ["1","2","3","4"],
+    enum: [1,2,3,4],
   },
   dateOfBirth: {
     type: Date,
