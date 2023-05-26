@@ -6,7 +6,9 @@ const DataDisplay = () => {
     "http://localhost:3001/publisher/allpublishers"
   );
   return (
-    <Table striped bordered hover>
+    <Table bordered style={{
+        border: "1px solid white"
+    }}>
       <thead>
         <tr>
           <th>Nombre</th>
