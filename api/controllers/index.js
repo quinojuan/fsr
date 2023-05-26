@@ -34,7 +34,6 @@ export const postPublisher = async (req, res) => {
     res.status(500).json(error);
   }
 };
-
 export const getAllPublishers = async (req, res) => {
   try {
     const publishers = await Publisher.find({});
@@ -43,7 +42,6 @@ export const getAllPublishers = async (req, res) => {
     console.log(error);
   }
 };
-
 export const updatePublisher = async (req, res) => {
   const { id } = req.params;
   const {
@@ -74,11 +72,12 @@ export const updatePublisher = async (req, res) => {
         ministerialServant,
         regularPionner,
       },
-      { new: true }
+      { new: true, runValidators: true } // si no ponía el runValidator me permitía actualizar el valor del enum "hope" a cualquier dato.
     );
     console.log("Document updated!")
     res.json("Success!")
   } catch (error) {
-    console.log("Document not found!")
+    console.log(error.message)
+    res.json(error.message)
   }
 };

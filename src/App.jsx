@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import DataDisplay from "./components/DataDisplay";
 
 const App = () => {
-  return (
-    <div>Hello World!</div>
-  )
-}
+  return <DataDisplay />;
+};
 
-export default App
+export default App;
