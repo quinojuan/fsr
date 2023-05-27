@@ -13,6 +13,7 @@ export const postPublisher = async (req, res) => {
       dateOfInmersed,
       ministerialServant,
       regularPionner,
+      activityMonth,
     } = req.body;
 
     const publisher = new Publisher({
@@ -42,6 +43,7 @@ export const getAllPublishers = async (req, res) => {
     console.log(error);
   }
 };
+
 export const updatePublisher = async (req, res) => {
   const { id } = req.params;
   const {
@@ -74,10 +76,49 @@ export const updatePublisher = async (req, res) => {
       },
       { new: true, runValidators: true } // si no ponía el runValidator me permitía actualizar el valor del enum "hope" a cualquier dato.
     );
-    console.log("Document updated!")
-    res.json("Success!")
+    console.log("Document updated!");
+    res.json("Success!");
   } catch (error) {
-    console.log(error.message)
-    res.json(error.message)
+    console.log(error.message);
+    res.json(error.message);
+  }
+};
+export const updateServiceReport = async (req, res) => {
+  const { id } = req.params;
+  const { activityMonth } = req.body;
+  const {
+    month,
+    placements,
+    videoShowings,
+    hours,
+    returnVisits,
+    bibleStudies,
+    remarks,
+  } = activityMonth;
+
+  console.log(activityMonth, "<<<<< soy activityMonth")
+  try {
+    await Publisher.updateOne(
+      { _id: id },
+      {
+        $push: {
+          activityMonth: {
+            month,
+            placements,
+            videoShowings,
+            hours,
+            returnVisits,
+            bibleStudies,
+            remarks,
+          },
+        },
+      },
+      { new: true, runValidators: true }
+    );
+
+    res.json("success");
+  } catch (error) {
+    console.log(error.message);
+    res.json(error.message);
   }
 };

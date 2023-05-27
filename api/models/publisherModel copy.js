@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import { getCurrentYear } from "../helpers/getCurrentYear.js";
 
 const publisherSchema = new mongoose.Schema({
   name: {
@@ -36,43 +35,23 @@ const publisherSchema = new mongoose.Schema({
   elder: { type: Boolean, default: false },
   ministerialServant: { type: Boolean, default: false },
   regularPionner: { type: Boolean, default: false },
+
   activityMonth: [
     {
-      serviceYear: {
-        type: String,
-        required: true,
-        default: getCurrentYear,
-      },
+      serviceYear: Number,
       month: {
         type: String,
-        enum: ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
+        enum: ["enero", "febrero", "marzo"],
       },
-      placements: {
-        type: Number,
-        default: 0,
-      },
-      videoShowings: {
-        type: Number,
-        default: 0,
-      },
+      placements: Number,
+      videoShowings: Number,
       hours: {
         type: Number,
         required: true,
-        default: 0,
       },
-      returnVisits: {
-        type: Number,
-        default: 0,
-      },
-
-      bibleStudies: {
-        type: Number,
-        default: 0,
-      },
-      remarks: {
-        type: String,
-        default: "",
-      },
+      returnVisits: Number,
+      bibleStudies: Number,
+      remarks: String,
     },
   ],
 });
