@@ -11,7 +11,7 @@ const NewPublisher = () => {
     group: "",
     hope: "",
     dateOfBirth: "",
-    dateOfInmersed: "",
+    dateInmersed: "",
     gender: "",
   });
 
@@ -43,7 +43,7 @@ const NewPublisher = () => {
           group: "",
           hope: "",
           dateOfBirth: "",
-          dateOfInmersed: "",
+          dateInmersed: "",
           gender: "",
         });
         inputNameRef.current.focus();
@@ -82,52 +82,46 @@ const NewPublisher = () => {
         <br />
         <label>
           Precursor Regular:
-          <input
-            type="text"
-            name="regularPionner"
-            value={datos.regularPionner ? "SI" : "NO"}
-            autoComplete="off"
-            onChange={handleChange}
-          />
+          <select name="regularPionner" id="regularPionner" onChange={handleChange}>
+            <option value={""}>Seleccione una opción</option>
+            <option value={false}>No</option>
+            <option value={true}>Si</option>
+          </select>
         </label>
         <br />
         <label>
           Anciano:
-          <input
-            type="text"
-            name="elder"
-            value={datos.elder ? "SI" : "NO"}
-            autoComplete="off"
-            onChange={handleChange}
-          />
+          <select name="elder" id="elder" onChange={handleChange}>
+            <option value={""}>Seleccione una opción</option>
+            <option value={false}>No</option>
+            <option value={true}>Si</option>
+          </select>
         </label>
         <br />
         <label>
           Siervo Ministerial:
-          <input
-            type="text"
-            name="ministerialServant"
-            value={datos.ministerialServant ? "SI" : "NO"}
-            autoComplete="off"
-            onChange={handleChange}
-          />
+          <select name="ministerialServant" id="ministerialServant" onChange={handleChange}>
+            <option value={""}>Seleccione una opción</option>
+            <option value={false}>No</option>
+            <option value={true}>Si</option>
+          </select>
         </label>
         <br />
         <label>
           Grupo:
-          <input
-            type="text"
-            name="group"
-            value={datos.group}
-            autoComplete="off"
-            onChange={handleChange}
-          />
+          <select name="group" id="group" onChange={handleChange}>
+            <option value={""}>Seleccione una opción</option>
+            <option value={1}>Grupo 1</option>
+            <option value={2}>Grupo 2</option>
+            <option value={3}>Grupo 3</option>
+            <option value={4}>Grupo 4</option>
+          </select>
         </label>
         <br />
         <label>
           Esperanza:
           <select name="hope" id="hope" onChange={handleChange}>
-            <option value={""}></option>
+            <option value={""}>Seleccione una opción</option>
             <option value={"Otras ovejas"}>Otras ovejas</option>
             <option value={"Ungido"}>Ungido</option>
           </select>
@@ -139,7 +133,7 @@ const NewPublisher = () => {
             type="text"
             name="dateOfBirth"
             value={datos.dateOfBirth}
-            autoComplete="off"
+            // autoComplete="off"
             onChange={handleChange}
           />
         </label>
@@ -148,22 +142,20 @@ const NewPublisher = () => {
           Fecha de bautismo:
           <input
             type="text"
-            name="dateOfInmersed"
-            value={datos.dateOfInmersed}
-            autoComplete="off"
+            name="dateInmersed"
+            value={datos.dateInmersed}
+            // autoComplete="off"
             onChange={handleChange}
           />
         </label>
         <br />
         <label>
           Genero:
-          <input
-            type="text"
-            name="gender"
-            value={datos.gender}
-            autoComplete="off"
-            onChange={handleChange}
-          />
+          <select name="gender" id="gender" onChange={handleChange}>
+            <option value={""}>Seleccione una opción</option>
+            <option value={"Femenino"}>Femenino</option>
+            <option value={"Masculino"}>Masculino</option>
+          </select>
         </label>
         <br />
         <button type="submit">Enviar</button>

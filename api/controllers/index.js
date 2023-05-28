@@ -10,7 +10,7 @@ export const postPublisher = async (req, res) => {
       hope,
       elder,
       dateOfBirth,
-      dateOfInmersed,
+      dateInmersed,
       ministerialServant,
       regularPionner,
       activityMonth,
@@ -24,11 +24,13 @@ export const postPublisher = async (req, res) => {
       hope,
       elder,
       dateOfBirth,
-      dateOfInmersed,
+      dateInmersed,
       ministerialServant,
       regularPionner,
+      activityMonth
     });
     await publisher.save();
+    console.log(publisher)
     res.status(201).json({ message: "Publisher created successfully!" });
   } catch (error) {
     console.log(error);
