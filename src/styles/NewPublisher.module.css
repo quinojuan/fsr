@@ -1,0 +1,35 @@
+* {
+    box-sizing: border-box;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 0 auto;
+}
+label {
+    display: inline-block;
+    color: tomato;
+    width: 100%;
+    margin: 0;
+
+}
+
+input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    margin: 0;
+}
+
+select {
+    width: 100%;
+    padding: 5px;
+    margin: 0;
+}
+
+button {
+    margin-top: 15px;
+}

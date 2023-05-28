@@ -14,6 +14,9 @@ app.use(cors())
 
 app.use("/publisher", publisherRoutes);
 
+app.get("/", (req, res) => {
+  res.send("Hola desde el backend!")
+})
 
 app.listen(port, () => {
   connectDB();

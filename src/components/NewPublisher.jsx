@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useRef, useState } from "react";
+import "../styles/NewPublisher.module.css"
 
 const NewPublisher = () => {
   const [datos, setDatos] = useState({
@@ -30,7 +31,7 @@ const NewPublisher = () => {
 
     // Enviar los datos a la API
     axios
-      .post("http://localhost:3001/publisher", datos)
+      .post("http://192.168.1.73:3001/publisher", datos)
       .then((response) => {
         alert("Publicador agregado exitosamente");
         console.log(response.data);
@@ -50,12 +51,14 @@ const NewPublisher = () => {
       })
       .catch((error) => {
         alert("Error al agregar el nuevo publicador!");
+        alert(error)
         console.log(error);
       });
   };
 
   return (
     <>
+    <div className="container-form">
       <form onSubmit={handleSubmit}>
         <label>
           Nombre:
@@ -68,7 +71,6 @@ const NewPublisher = () => {
             onChange={handleChange}
           />
         </label>
-        <br />
         <label>
           Apellido:
           <input
@@ -79,7 +81,6 @@ const NewPublisher = () => {
             onChange={handleChange}
           />
         </label>
-        <br />
         <label>
           Precursor Regular:
           <select name="regularPionner" id="regularPionner" onChange={handleChange}>
@@ -88,7 +89,6 @@ const NewPublisher = () => {
             <option value={true}>Si</option>
           </select>
         </label>
-        <br />
         <label>
           Anciano:
           <select name="elder" id="elder" onChange={handleChange}>
@@ -97,7 +97,6 @@ const NewPublisher = () => {
             <option value={true}>Si</option>
           </select>
         </label>
-        <br />
         <label>
           Siervo Ministerial:
           <select name="ministerialServant" id="ministerialServant" onChange={handleChange}>
@@ -106,7 +105,6 @@ const NewPublisher = () => {
             <option value={true}>Si</option>
           </select>
         </label>
-        <br />
         <label>
           Grupo:
           <select name="group" id="group" onChange={handleChange}>
@@ -117,7 +115,6 @@ const NewPublisher = () => {
             <option value={4}>Grupo 4</option>
           </select>
         </label>
-        <br />
         <label>
           Esperanza:
           <select name="hope" id="hope" onChange={handleChange}>
@@ -126,7 +123,6 @@ const NewPublisher = () => {
             <option value={"Ungido"}>Ungido</option>
           </select>
         </label>
-        <br />
         <label>
           Fecha de nacimiento:
           <input
@@ -137,7 +133,6 @@ const NewPublisher = () => {
             onChange={handleChange}
           />
         </label>
-        <br />
         <label>
           Fecha de bautismo:
           <input
@@ -148,7 +143,6 @@ const NewPublisher = () => {
             onChange={handleChange}
           />
         </label>
-        <br />
         <label>
           Genero:
           <select name="gender" id="gender" onChange={handleChange}>
@@ -157,9 +151,9 @@ const NewPublisher = () => {
             <option value={"Masculino"}>Masculino</option>
           </select>
         </label>
-        <br />
         <button type="submit">Enviar</button>
       </form>
+    </div>
     </>
   );
 };
