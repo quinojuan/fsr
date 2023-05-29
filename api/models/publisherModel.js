@@ -10,6 +10,12 @@ const publisherSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  state: {
+    type: String,
+    enum: ["active", "irregular", "inactive"],
+    default: "active",
+    required: true,
+  },
   group: {
     type: Number,
     required: true,

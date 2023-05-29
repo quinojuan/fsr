@@ -27,3 +27,10 @@ const year = new Date().getFullYear()
 console.log(year)
 
 console.log(typeof(year))
+
+
+const fecha = "2023-05-26T10:30:00.000Z"
+
+const fechaparseada = new Date(Date.parse(fecha))
+
+console.log(fechaparseada)
