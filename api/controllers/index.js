@@ -42,7 +42,25 @@ export const postPublisher = async (req, res) => {
 export const getAllPublishers = async (req, res) => {
   try {
     const publishers = await Publisher.find({});
-    res.json(publishers);
+    const count = await Publisher.countDocuments();
+    const actives = await Publisher.countDocuments({ state: "active" });
+    const inactives = await Publisher.countDocuments({ state: "inactive" });
+
+    const groups = [];
+    for (let i = 1; i < 5; i++) {
+      const cantidad = await Publisher.countDocuments({ group: i });
+      groups.push(cantidad);
+    }
+    res.json({
+      // publishers,
+      total: count,
+      activos: actives,
+      inactivos: inactives,
+      group1: groups[0],
+      group2: groups[1],
+      group3: groups[2],
+      group4: groups[3],
+    });
   } catch (error) {
     console.log(error);
   }
@@ -158,19 +176,26 @@ export const queryStrings = async (req, res) => {
           res.status(404).json("Publicador no encontrado");
         } else {
           res.status(200).json(publisherFound);
+          break;
         }
       } catch (error) {
         console.log("OK");
         res.json(error.message);
+        break;
       }
 
     case "searchbyactives":
       try {
-        const states = await Publisher.findOne({ state: "active" });
-        res.json(states);
+        const states = await Publisher.find({ state: "active" });
+        const activeList = states.map((pub) => {
+          return `${pub.name} ${pub.lastName}`;
+        });
+        res.json(activeList);
+        break;
       } catch (error) {
         console.log(error.message);
         res.json(error.message);
+        break;
       }
 
     case "searchbygroup":
@@ -192,8 +217,36 @@ export const queryStrings = async (req, res) => {
       } catch (error) {
         console.log(error.message);
         res.json(error.message);
+        break;
       }
     default:
       res.json("No se encontró el tipo de consulta");
+  }
+};
+
+export const getResume = async (req, res) => {
+  try {
+    const publishers = await Publisher.countDocuments();
+    const actives = await Publisher.countDocuments({ state: "active" });
+    const inactives = await Publisher.countDocuments({ state: "inactive" });
+    const groups = [];
+
+    for (let i = 1; i < 5; i++) {
+      const cantidad = await Publisher.countDocuments({ group: i });
+      groups.push(cantidad);
+    }
+    res.json({
+      total: publishers,
+      activos: actives,
+      inactivos: inactives,
+      group: {
+        grupo_1: groups[0],
+        grupo_2: groups[1],
+        grupo_3: groups[2],
+        grupo_4: groups[3],
+      },
+    });
+  } catch (error) {
+    console.log(error);
   }
 };
