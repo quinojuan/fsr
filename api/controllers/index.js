@@ -29,10 +29,10 @@ export const postPublisher = async (req, res) => {
       dateInmersed,
       ministerialServant,
       regularPionner,
-      activityMonth
+      activityMonth,
     });
     await publisher.save();
-    console.log(publisher)
+    console.log(publisher);
     res.status(201).json({ message: "Publisher created successfully!" });
   } catch (error) {
     console.log(error);
@@ -102,7 +102,7 @@ export const updateServiceReport = async (req, res) => {
     remarks,
   } = activityMonth;
 
-  console.log(activityMonth, "<<<<< soy activityMonth")
+  console.log(activityMonth, "<<<<< soy activityMonth");
   try {
     await Publisher.updateOne(
       { _id: id },
@@ -126,5 +126,74 @@ export const updateServiceReport = async (req, res) => {
   } catch (error) {
     console.log(error.message);
     res.json(error.message);
+  }
+};
+export const queryData = async (req, res) => {
+  try {
+    const { type } = req.params;
+    // Realizo la consulta basada en el type de la query
+    if (type === "active") {
+      const actives = await Publisher.find({ state: { $ne: "inactive" } });
+      res.json(actives);
+    } else if (type === "inactive") {
+      const inactives = await Publisher.find({ state: { $ne: "active" } });
+      res.json(inactives);
+    } else {
+      res.json("La consulta no existe!");
+    }
+  } catch (error) {
+    console.log(error.message);
+    res.json(error.message);
+  }
+};
+export const queryStrings = async (req, res) => {
+  const { publisher, state, group } = req.query;
+  const { type } = req.params;
+
+  switch (type) {
+    case "searchbypublisher":
+      try {
+        const publisherFound = await Publisher.findOne({ name: publisher });
+        if (!publisherFound) {
+          res.status(404).json("Publicador no encontrado");
+        } else {
+          res.status(200).json(publisherFound);
+        }
+      } catch (error) {
+        console.log("OK");
+        res.json(error.message);
+      }
+
+    case "searchbyactives":
+      try {
+        const states = await Publisher.findOne({ state: "active" });
+        res.json(states);
+      } catch (error) {
+        console.log(error.message);
+        res.json(error.message);
+      }
+
+    case "searchbygroup":
+      try {
+        const publishersOfAGroup = await Publisher.find({ group });
+        const numberOfPublishers = await Publisher.count({
+          group,
+          state: "active",
+        });
+        const nameOfPublishers = publishersOfAGroup.map((publisher) => {
+          return `${publisher.name} ${publisher.lastName}`;
+        });
+        res.json({
+          publishers: publishersOfAGroup,
+          count: numberOfPublishers,
+          names: nameOfPublishers,
+        });
+        break;
+      } catch (error) {
+        console.log(error.message);
+        res.json(error.message);
+      }
+    default:
+      res.json("No se encontró el tipo de consulta");
   }
 };
