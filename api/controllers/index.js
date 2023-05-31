@@ -40,12 +40,21 @@ export const postPublisher = async (req, res) => {
   }
 };
 export const getAllPublishers = async (req, res) => {
+  
   try {
-    const publishers = await Publisher.find({});
-    res.json(publishers);
+    const publishers = await Publisher.find({state: "active"}).sort({ group: 1, lastName: 1 })
+    res.json(publishers)
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
+  
+  
+  // try {
+  //   const publishers = await Publisher.find({});
+  //   res.json(publishers);
+  // } catch (error) {
+  //   console.log(error);
+  // }
 };
 
 export const updatePublisher = async (req, res) => {

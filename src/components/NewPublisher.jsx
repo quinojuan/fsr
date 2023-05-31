@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 import "../styles/NewPublisher.module.css"
 
 const NewPublisher = () => {
@@ -58,6 +60,10 @@ const NewPublisher = () => {
 
   return (
     <>
+<Link to={"/"}>
+    <Button variant="secondary">Volver</Button>
+</Link>
+<h1>Cargar publicador:</h1>
     <div className="container-form">
       <form onSubmit={handleSubmit}>
         <label>
@@ -151,7 +157,7 @@ const NewPublisher = () => {
             <option value={"Masculino"}>Masculino</option>
           </select>
         </label>
-        <button type="submit">Enviar</button>
+        <Button variant="warning">Enviar</Button>
       </form>
     </div>
     </>
