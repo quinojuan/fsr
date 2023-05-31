@@ -11,8 +11,11 @@ const Home = () => {
         <Link to={"/cargarpublicador"}>
           <Button style={{ marginRight: "10px" }}>Cargar Publicador</Button>
         </Link>
-        <Link to={"cargarinforme"}>
-          <Button className="m">Cargar Informes</Button>
+        <Link to={"/cargarinforme"}>
+          <Button>Cargar Informes</Button>
+        </Link>
+        <Link to={"/lista"}>
+          <Button>Lista publicadores</Button>
         </Link>
       </div>
     </>
