@@ -42,25 +42,7 @@ export const postPublisher = async (req, res) => {
 export const getAllPublishers = async (req, res) => {
   try {
     const publishers = await Publisher.find({});
-    const count = await Publisher.countDocuments();
-    const actives = await Publisher.countDocuments({ state: "active" });
-    const inactives = await Publisher.countDocuments({ state: "inactive" });
-
-    const groups = [];
-    for (let i = 1; i < 5; i++) {
-      const cantidad = await Publisher.countDocuments({ group: i });
-      groups.push(cantidad);
-    }
-    res.json({
-      // publishers,
-      total: count,
-      activos: actives,
-      inactivos: inactives,
-      group1: groups[0],
-      group2: groups[1],
-      group3: groups[2],
-      group4: groups[3],
-    });
+    res.json(publishers);
   } catch (error) {
     console.log(error);
   }
