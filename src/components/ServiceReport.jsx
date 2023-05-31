@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import serviceReportCSS from "../components/ServiceReport.module.css";
+import serviceReportCSS from "../styles/ServiceReport.module.css";
 import { Button } from "react-bootstrap";
 import Swal from 'sweetalert2'
 

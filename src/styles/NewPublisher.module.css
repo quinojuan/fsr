@@ -1,0 +1,30 @@
+.row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 350px;
+  }
+  
+  .label {
+    width: 150px;
+    text-align: right;
+    margin-right: 10px;
+  }
+  
+  .input {
+    flex: 1;
+  }
+  
+  .month {
+    font-size: 1.3em;
+    text-align: right;
+    display: block;
+  }
+  
+  .form {
+    width: 290px;
+  }
+  
+  .send {
+    margin: 0 auto;
+  }
