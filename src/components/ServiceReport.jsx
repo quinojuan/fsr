@@ -18,22 +18,29 @@ const ServiceReport = () => {
   });
 
   const handleChange = (e) => {
-    setReport({
-      ...report,
-      activityMonth: {
-        ...report.activityMonth,
-        [e.target.name]: e.target.value,
+    setReport(
+      {
+        ...report,
+        activityMonth: {
+          ...report.activityMonth,
+          [e.target.name]: e.target.value,
+        },
       },
-    }, console.log(report));
-    
+      console.log(report)
+    );
   };
 
   const handlePublisher = (e) => {
     e.preventDefault();
-    const [{ _id }] = publishers.filter(
-      (pub) => `${pub.name} ${pub.lastName}` === e.target.value
-    );
-    setId(_id);
+    if (e.target.value) {
+      const [{ _id }] = publishers.filter(
+        (pub) => `${pub.name} ${pub.lastName}` === e.target.value
+      );
+      console.log(_id, "<<<<<<<<<<<<< soy el id")
+      setId(_id);
+    } else {
+        setId(0)
+    }
   };
 
   const handleSubmit = (e) => {
@@ -68,7 +75,7 @@ const ServiceReport = () => {
         <br />
         <label htmlFor="">Publicador</label>
         <select name="publisher" id="publisher" onChange={handlePublisher}>
-          <option>Seleccione un publicador</option>
+          <option value={""}>Seleccione un publicador</option>
           {publishers.map((pub, idx) => (
             <option key={idx}>
               {pub.name} {pub.lastName}
