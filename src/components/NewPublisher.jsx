@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import "../styles/NewPublisher.module.css";
 import newPublisherCss from "../styles/NewPublisher.module.css";
+import Swal from "sweetalert2";
 
 const NewPublisher = () => {
   const [datos, setDatos] = useState({
@@ -29,34 +30,32 @@ const NewPublisher = () => {
     console.log(datos);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     // Enviar los datos a la API
-    axios
-      .post("http://192.168.1.73:3001/publisher", datos)
-      .then((response) => {
-        alert("Publicador agregado exitosamente");
-        console.log(response.data);
-        setDatos({
-          lastName: "",
-          name: "",
-          regularPionner: false,
-          elder: false,
-          ministerialServant: false,
-          group: "",
-          hope: "",
-          dateOfBirth: "",
-          dateInmersed: "",
-          gender: "",
-        });
-        inputNameRef.current.focus();
-      })
-      .catch((error) => {
-        alert("Error al agregar el nuevo publicador!");
-        alert(error);
-        console.log(error);
+    try {
+      await axios.post("http://localhost:3001/publisher", datos);
+
+      Swal.fire("Bien", "Publicador agregado correctamente", "success");
+      setDatos({
+        lastName: "",
+        name: "",
+        regularPionner: false,
+        elder: false,
+        ministerialServant: false,
+        group: "",
+        hope: "",
+        dateOfBirth: "",
+        dateInmersed: "",
+        gender: "",
       });
+      inputNameRef.current.focus();
+    } catch (error) {
+      alert("Error al agregar el nuevo publicador!");
+      alert(error);
+      console.log(error);
+    }
   };
 
   return (
@@ -64,7 +63,7 @@ const NewPublisher = () => {
       <Link to={"/"}>
         <Button variant="secondary">Volver</Button>
       </Link>
-      <h1>Cargar publicador:</h1>
+      <h3>Nuevo publicador:</h3>
       <div className="container-form">
         <form onSubmit={handleSubmit}>
           <div className={newPublisherCss.row}>
@@ -96,6 +95,7 @@ const NewPublisher = () => {
             <label className={newPublisherCss.label}>Precursor Regular:</label>
             <select
               className={newPublisherCss.input}
+              value={datos.regularPionner}
               name="regularPionner"
               id="regularPionner"
               onChange={handleChange}
@@ -111,6 +111,7 @@ const NewPublisher = () => {
             <select
               className={newPublisherCss.input}
               name="elder"
+              value={datos.elder}
               id="elder"
               onChange={handleChange}
             >
@@ -125,6 +126,7 @@ const NewPublisher = () => {
             <select
               className={newPublisherCss.input}
               name="ministerialServant"
+              value={datos.ministerialServant}
               id="ministerialServant"
               onChange={handleChange}
             >
@@ -139,6 +141,7 @@ const NewPublisher = () => {
             <select
               className={newPublisherCss.input}
               name="group"
+              value={datos.group}
               id="group"
               onChange={handleChange}
             >
@@ -155,6 +158,7 @@ const NewPublisher = () => {
             <select
               className={newPublisherCss.input}
               name="hope"
+              value={datos.hope}
               id="hope"
               onChange={handleChange}
             >
@@ -173,7 +177,7 @@ const NewPublisher = () => {
               type="text"
               name="dateOfBirth"
               value={datos.dateOfBirth}
-              // autoComplete="off"
+              autoComplete="off"
               onChange={handleChange}
             />
           </div>
@@ -185,7 +189,7 @@ const NewPublisher = () => {
               type="text"
               name="dateInmersed"
               value={datos.dateInmersed}
-              // autoComplete="off"
+              autoComplete="off"
               onChange={handleChange}
             />
           </div>
@@ -194,6 +198,7 @@ const NewPublisher = () => {
             <select
               className={newPublisherCss.input}
               name="gender"
+              value={datos.gender}
               id="gender"
               onChange={handleChange}
             >
@@ -203,7 +208,9 @@ const NewPublisher = () => {
             </select>
           </div>
 
-          <Button variant="warning">Enviar</Button>
+          <Button onClick={handleSubmit} variant="warning">
+            Enviar
+          </Button>
         </form>
       </div>
     </>
